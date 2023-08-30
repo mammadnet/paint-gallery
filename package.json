@@ -14,5 +14,8 @@
     "image"
   ],
   "author": "mohsen",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mariadb": "^3.2.0"
+  }
 }
