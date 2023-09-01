@@ -7,7 +7,6 @@ require('dotenv').config();
 
 
 
-
 class Response{
 
     constructor(images){
@@ -77,6 +76,7 @@ async function requestListener(req, res){
         
         
         res.setHeader("Content-Type", "application/json")
+        res.setHeader("Access-Control-Allow-Origin", "*")
         res.write(response.toString());
         res.end();
         
