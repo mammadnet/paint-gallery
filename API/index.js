@@ -4,7 +4,8 @@ const mariadb = require("mariadb")
 require('dotenv').config();
 
 
-
+const IP = process.env.IP;
+const PORT = process.env.PORT;
 
 
 class Response{
@@ -89,6 +90,6 @@ async function requestListener(req, res){
 
 const server = http.createServer(requestListener)
 
-server.listen(12345, "127.0.0.1", ()=>{
+server.listen(PORT, IP, ()=>{
     console.log("Run server");
 })
