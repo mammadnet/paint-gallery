@@ -60,3 +60,35 @@ async function getData(numidFrom = 0, number=6, classification = undefined){
     }
 
 }
+
+
+
+async function requestListener(req, res){
+    
+    
+    console.log("request receive")
+    const {lastNumid, number, classification} = url.parse(req.url, true).query;
+    
+    try{
+        const data = await getData(lastNumid, number, classification);
+        
+        
+        const response = new Response(data);
+        
+        
+        res.setHeader("Content-Type", "application/json")
+        res.write(response.toString());
+        res.end();
+        
+    }catch(err){
+        console.error(err);
+        res.end("something went WRONG!!!!!");
+    }
+}
+
+
+const server = http.createServer(requestListener)
+
+server.listen(12345, "127.0.0.1", ()=>{
+    console.log("Run server");
+})
