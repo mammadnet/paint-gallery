@@ -33,7 +33,7 @@ async function getData(numidFrom = 0, number=6, classification = undefined){
     const classificationCondition = classification ? 'AND classification=' + `"${classification}"`: '';
 
     let query = `\
-    SELECT DISTINCT numid, classification, title, iiifurl FROM data \
+    SELECT DISTINCT numid, classification, title, width, height,iiifurl FROM data \
     WHERE (numid >= ${numidFrom} ${classificationCondition})\
     LIMIT ${number};`;
 
