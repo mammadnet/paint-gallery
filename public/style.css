@@ -38,6 +38,12 @@ img {
 	grid-auto-rows: 200px;
 	grid-auto-flow: dense;
 }
+
+.grid-wrapper .small{
+	grid-row: span 1;
+	grid-column: span 1;
+}
+
 .grid-wrapper .wide {
 	grid-column: span 2;
 }
