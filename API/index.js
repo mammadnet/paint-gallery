@@ -42,7 +42,7 @@ async function getData(numidFrom = 0, number=6, classification = undefined){
         port: process.env.DATABASE_PORT,
         user: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASS,
-        database: 'imageInfo',
+        database: process.env.DATABASE_NAME,
         // timeout : process.env.DATABASE_TIMEOUT_LIMIT,
         // connectionLimit:process.env.DATABASE_CONNECTION_LIMIT,
         // trace: true,
