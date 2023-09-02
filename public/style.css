@@ -50,6 +50,11 @@ img {
 .grid-wrapper .tall {
 	grid-row: span 2;
 }
+
+.grid-wrapper .tall > img {
+	object-position: top;
+}
+
 .grid-wrapper .big {
 	grid-column: span 2;
 	grid-row: span 2;
