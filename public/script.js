@@ -17,11 +17,23 @@ async function getData(lastNumid=0, number=10, classification =''){
 async function imgAppend(data){
     data.forEach(info => {
         const img = document.createElement("img");
-        img.src = `${info.iiifurl}/full/1000,/0/default.jpg`
+        img.src = `${info.iiifurl}/full/!1000,1000/0/default.jpg`
         const div = document.createElement("div");
-        div.classList.add('tall')
+        const className = sizeDescription(info);
+        div.classList.add(className)
         div.appendChild(img);
         imageContainer.appendChild(div);
     })
+}
+
+getData(34, 400);
+
+function sizeDescription(info){         // Return size (small, big, wide, tall) of image
+    // if(info.height + info.width === 0) return 'small';
+    if(info.width / info.height < 0.9) return 'tall';
+    else if(info.width  / info.height > 2.1) return 'wide';
+    else return info.classification === 'Drawing' ? 'small' : 'big';
+
+
 }
 
