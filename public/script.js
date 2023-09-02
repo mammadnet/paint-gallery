@@ -37,3 +37,8 @@ function sizeDescription(info){         // Return size (small, big, wide, tall) 
 
 }
 
+
+setTimeout(async ()=> {                          // ---> TEMP <---
+    const data = await getData(40, 60);
+    imgAppend(data.images);
+}, 1000)
