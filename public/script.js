@@ -18,13 +18,15 @@ async function getData(lastNumid=0, number=10, classification =''){
 
 async function imgAppend(data){
     data.forEach(info => {
-        const img = document.createElement("img");
+        const img = new Image();
         img.src = `${info.iiifurl}/full/!1000,1000/0/default.jpg`
-        const div = document.createElement("div");
-        const className = sizeDescription(info);
-        div.classList.add(className)
-        div.appendChild(img);
-        imageContainer.appendChild(div);
+        img.addEventListener('load', ()=>{
+            const div = document.createElement("div");
+            const className = sizeDescription(info);
+            div.classList.add(className)
+            div.appendChild(img);
+            imageContainer.appendChild(div);
+        })
     })
 }
 
