@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const IP = process.env.IP;
 const PORT = process.env.PORT;
+const DATA_TABLE = process.env.DATA_TABLE;
 
 
 class Response{
@@ -33,7 +34,7 @@ async function getData(numidFrom = 0, number=6, classification = undefined){
     const classificationCondition = classification ? 'AND classification=' + `"${classification}"`: '';
 
     let query = `\
-    SELECT DISTINCT numid, classification, title, medium, width, height,iiifurl FROM gdata \
+    SELECT DISTINCT numid, classification, title, medium, width, height,iiifurl FROM ${DATA_TABLE} \
     WHERE (numid >= ${numidFrom} ${classificationCondition})\
     LIMIT ${number};`;
 
