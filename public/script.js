@@ -1,5 +1,7 @@
 
 const imageContainer = document.querySelector(".grid-wrapper")
+const imgIncrease = 80;
+let lastNumid = 0;
 
 async function getData(lastNumid=0, number=10, classification =''){
     const APIurl = new URL("https://paint.iran.liara.run")
@@ -38,7 +40,29 @@ function sizeDescription(info){         // Return size (small, big, wide, tall) 
 }
 
 
-setTimeout(async ()=> {                          // ---> TEMP <---
-    const data = await getData(40, 60);
-    imgAppend(data.images);
-}, 1000)
+let throttleCheck;
+function throttle(cb, time){
+    if(throttleCheck) return;
+
+    throttleCheck = true;
+    setTimeout(()=>{
+        cb();
+        throttleCheck = false;
+    }, time)
+}
+
+async function handelInfiniteScroll(){
+    const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+    if(endOfPage){
+        throttle(async ()=>{
+            console.log('fuck1');
+            const data = await getData(lastNumid, imgIncrease)
+            lastNumid = data.lastNumid+1;
+            console.log(lastNumid)
+            imgAppend(data.images);
+        }, 1000)
+    }
+}
+
+
+    window.addEventListener('scroll',handelInfiniteScroll);
