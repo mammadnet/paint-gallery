@@ -2,6 +2,8 @@
 const imageContainer = document.querySelector(".grid-wrapper")
 const imgIncrease = 80;
 let lastNumid = 0;
+const THUMB_WIDTH = 700;            // Max thumb width
+const THUMB_HEIGHT = 700;           // Max thumb height
 
 async function getData(lastNumid=0, number=10, classification =''){
     const APIurl = new URL("https://paint.iran.liara.run")
@@ -19,7 +21,7 @@ async function getData(lastNumid=0, number=10, classification =''){
 async function imgAppend(data){
     data.forEach(info => {
         const img = new Image();
-        img.src = `${info.iiifurl}/full/!1000,1000/0/default.jpg`
+        img.src = `${info.iiifurl}/full/!${THUMB_WIDTH},${THUMB_HEIGHT}/0/default.jpg`
         img.addEventListener('load', ()=>{
             const div = document.createElement("div");
             const className = sizeDescription(info);
