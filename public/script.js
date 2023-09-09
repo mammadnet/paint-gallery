@@ -37,7 +37,7 @@ getData(34, 400);
 function sizeDescription(info){         // Return size (small, big, wide, tall) of image
     if(info.medium.includes('tempera') && info.medium.includes('panel')) return 'small';
     if(info.width / info.height < 0.9) return 'tall';
-    else if(info.width  / info.height > 2.1) return 'wide';
+    else if(info.width  / info.height > 2) return 'wide';
     else return info.classification === 'Drawing' ? 'small' : 'big';
 
 
