@@ -2,8 +2,8 @@
 const imageContainer = document.querySelector(".grid-wrapper")
 const imgIncrease = 80;
 let lastNumid = 0;
-const THUMB_WIDTH = 700;            // Max thumb width
-const THUMB_HEIGHT = 700;           // Max thumb height
+const THUMB_WIDTH = 600;            // Max thumb width
+const THUMB_HEIGHT = 600;           // Max thumb height
 
 async function getData(lastNumid=0, number=10, classification =''){
     const APIurl = new URL("https://paint.iran.liara.run")
