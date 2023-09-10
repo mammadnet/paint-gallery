@@ -34,6 +34,13 @@ async function imgAppend(data){
 
 getData(34, 400);
 
+async function loadImgs(){
+    console.log("loaded")
+    const data = await getData(lastNumid+1, imgIncrease);
+    lastNumid = data.lastNumid;
+    imgAppend(data.images)
+}
+
 function sizeDescription(info){         // Return size (small, big, wide, tall) of image
     if(info.medium.includes('tempera') && info.medium.includes('panel')) return 'small';
     if(info.width / info.height < 0.9) return 'tall';
@@ -58,15 +65,14 @@ function throttle(cb, time){
 async function handelInfiniteScroll(){
     const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
     if(endOfPage){
-        throttle(async ()=>{
-            console.log('fuck1');
-            const data = await getData(lastNumid, imgIncrease)
-            lastNumid = data.lastNumid+1;
+        throttle(()=>{
+            loadImgs();
             console.log(lastNumid)
-            imgAppend(data.images);
         }, 1000)
     }
 }
 
 
-    window.addEventListener('scroll',handelInfiniteScroll);
+window.addEventListener('scroll',handelInfiniteScroll);
+
+window.addEventListener('load', loadImgs)
