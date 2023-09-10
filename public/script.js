@@ -17,11 +17,14 @@ async function getData(lastNumid=0, number=10, classification =''){
     return data;
 }
 
+function imgSrc(url, width, height){
+    return `${url}/full/!${width},${height}/0/default.jpg`;
+}
 
 async function imgAppend(data){
     data.forEach(info => {
         const img = new Image();
-        img.src = `${info.iiifurl}/full/!${THUMB_WIDTH},${THUMB_HEIGHT}/0/default.jpg`
+        img.src = imgSrc(info.iiifurl, THUMB_WIDTH, THUMB_HEIGHT);
         img.addEventListener('load', ()=>{
             const div = document.createElement("div");
             const className = sizeDescription(info);
