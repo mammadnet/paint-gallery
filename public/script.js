@@ -25,6 +25,7 @@ async function imgAppend(data){
     data.forEach(info => {
         const img = new Image();
         img.src = imgSrc(info.iiifurl, THUMB_WIDTH, THUMB_HEIGHT);
+        img.addEventListener('click', ()=>openPopup(imgSrc(info.iiifurl, 1300, 1300)))
         img.addEventListener('load', ()=>{
             const div = document.createElement("div");
             const className = sizeDescription(info);
@@ -79,3 +80,48 @@ async function handelInfiniteScroll(){
 window.addEventListener('scroll',handelInfiniteScroll);
 
 window.addEventListener('load', loadImgs)
+
+function openPopup(src){
+    const popupImage = document.querySelector('.popupimage')
+    const popupcontainer = document.querySelector('.popup-whole')
+
+    popupImage.src = src;
+    popupcontainer.classList.remove('hidden');
+
+}
+
+function removePopup(event){
+    const popupcontainer = document.querySelector('.popup-container');
+    if(!popupcontainer.contains(event.target)){
+        const popupImage = document.querySelector('.popupimage');
+        const popupWhole = document.querySelector('.popup-whole')
+    
+        popupImage.src = '';
+        popupWhole.classList.add('hidden'); 
+
+    }
+}
+
+function popupResize(){
+    const popup = document.querySelector('.popup');
+    const popupcontainer = document.querySelector('.popup-container')
+    const popupWhole = document.querySelector('.popup-whole')
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+
+    if(windowHeight / windowWidth > 1.2){
+        popupcontainer.style.height = 'unset'
+        popupcontainer.style.maxWidth = '90%'
+    }else{
+        popupcontainer.style.height = '96%';
+        popupcontainer.style.maxWidth = '70%'
+    }
+}
+
+window.addEventListener('load', popupResize);
+
+window.addEventListener('resize', popupResize);
+
+popupWhole = document.querySelector('.popup-whole')
+popupWhole.addEventListener('click', removePopup)     // Check clicking of outside of popup
+
