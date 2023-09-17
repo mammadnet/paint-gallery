@@ -45,6 +45,7 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     grid-auto-rows: 200px;
     grid-auto-flow: dense;
+    z-index: -111;
 }
 
 .grid-wrapper .small {
@@ -67,6 +68,7 @@ img {
 .popup-whole {
     width: 100%;
     max-height: 100vh;
+    z-index: 999;
 }
 
 .popup-background {
@@ -128,8 +130,7 @@ img {
     background: var(--nav-background);
     width: var(--navbar-width);
     height: var(--navbar-height);
-    position: relative;
-    z-index: 3;
+    position:absolute;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     display: flex;
@@ -168,7 +169,8 @@ img {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    transition: opacity 0.2s ease-in, right 0.2s ease-in, height 0.2s ease-in-out,width 0.2s ease-in;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in, right 0.2s ease-in, height 0.2s ease-in-out,width 0.2s ease-in,visibility 0.2s ease-in;
 
 }
 .navbar .fac a,
@@ -201,6 +203,7 @@ label:hover {
     animation: fac-animation 0.4s ease-out forwards 0.1s;
     right: -170px;
     opacity: 1;
+    visibility: visible;
 }
 
 @keyframes fab-animation {

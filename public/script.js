@@ -122,3 +122,17 @@ window.addEventListener("resize", popupResize);
 
 popupWhole = document.querySelector(".popup-whole");
 popupWhole.addEventListener("click", removePopup); // Check clicking of outside of popup
+
+
+function closeNavbar(event){
+    const navbar = document.querySelector('.navbar')
+
+    if(!navbar.contains(event.target)){
+        const navButton = document.querySelector(".nav-button");
+        navButton.checked= false;
+    }
+    
+}
+
+    
+window.addEventListener('click', closeNavbar)
