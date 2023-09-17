@@ -29,6 +29,7 @@ async function imgAppend(data) {
         );
         img.addEventListener("load", () => {
             const div = document.createElement("div");
+            div.setAttribute('data-classification', info.classification)
             const className = sizeDescription(info);
             div.classList.add(className);
             div.appendChild(img);
