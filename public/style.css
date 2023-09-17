@@ -119,12 +119,13 @@ img {
 .navbar {
     width: var(--navbar-width);
     height: var(--navbar-height);
-    position: relative;
+    position: fixed;
+    top: 10%;
+    left: 6%;
     border-radius: var(--border-radius);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 6rem;
 }
 .navbar .fabb {
     background: var(--nav-background);
