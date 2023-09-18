@@ -30,6 +30,8 @@ async function imgAppend(data) {
         img.addEventListener("click", () =>
             openPopup(imgSrc(info.iiifurl, 1300, 1300))
         );
+        img.alt = info.title;
+        img.title = info.title;
         img.addEventListener("load", () => {
             const div = document.createElement("div");
             div.setAttribute('data-classification', info.classification)
