@@ -3,6 +3,7 @@ const imgIncrease = 80;
 let lastNumid = 0;
 const THUMB_WIDTH = 600; // Max thumb width
 const THUMB_HEIGHT = 600; // Max thumb height
+let classification = 'Painting';
 
 async function getData(lastNumid = 0, number = 10, classification = "") {
     const APIurl = new URL("https://paint.iran.liara.run");
@@ -30,6 +31,10 @@ async function imgAppend(data) {
         img.addEventListener("load", () => {
             const div = document.createElement("div");
             div.setAttribute('data-classification', info.classification)
+            div.classList.add('frame')
+            if(info.classification === classification)
+                div.classList.add('show-frame')
+            else div.classList.add('hidden')
             const className = sizeDescription(info);
             div.classList.add(className);
             div.appendChild(img);
@@ -137,3 +142,31 @@ function closeNavbar(event){
 
     
 window.addEventListener('click', closeNavbar)
+
+
+function setImageClass(classification){
+    const frames = document.querySelectorAll('.frame')
+    frames.forEach(f => {
+        if(f.getAttribute('data-classification') === classification){
+            f.classList.remove('hidden');
+            f.classList.add('show-frame')
+        }
+        else{
+             f.classList.add('hidden')
+            f.classList.remove('show-frame');
+
+            }
+    })
+}
+
+const classificationSwitch = document.querySelector('.tgl');
+
+classificationSwitch.addEventListener('change', ()=>{
+    window.scrollTo(0, 0)
+    if(classificationSwitch.checked){
+        classification = 'Drawing'
+    }else{
+        classification = 'Painting'
+    }
+    setImageClass(classification);
+})

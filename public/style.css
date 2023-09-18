@@ -27,7 +27,6 @@ img {
 
 /* Main CSS */
 .grid-wrapper > div {
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -112,6 +111,9 @@ img {
     display: none;
 }
 
+.show-frame{
+    display: flex;
+}
 
 
 /* navbar style: */
