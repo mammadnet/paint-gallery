@@ -2,7 +2,7 @@
 
 A Web API for show painting images, built with Node.js. The API provides endpoints to fetch painting records in batches, optionally filtered by classification.
 
-**Live Preview:** [https://mammadnet.github.io/paint-gallery/api](https://mammadnet.github.io/paint-gallery/api)
+**Live Preview:** [gallery.2mohsen.ir](https://gallery.2mohsen.ir/)
 
 ## Repository Structure
 
